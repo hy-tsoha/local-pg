@@ -69,7 +69,6 @@ cd $SOURCEDIR
 ./configure --prefix=$INSTALLDIR --with-openssl # openssl just in case
 make
 make install-strip
-make install-docs
 
 # update .bash_profile
 
