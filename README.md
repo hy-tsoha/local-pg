@@ -56,4 +56,4 @@ Since lab computers are shared, please do not leave your database running in the
 
 There is practically no error checking. If build or something else fails, you are left to figure out what went wrong by yourself.
 
-If you have problems with requirements, see PostgreSQL documentation about possible configure options for requirements (link above), and modify variable CONFIGUREOPTIONS in the start of the script as needed.
+If you have problems with requirements, see PostgreSQL documentation about possible configure options for requirements (link above), and modify variable CONFIGUREOPTIONS at the start of the script as needed.
