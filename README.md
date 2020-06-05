@@ -46,6 +46,12 @@ Script will install PostgreSQL and your database in to your home directory, and 
 Since lab computers are shared, please do not leave your database running in the background. For your convenience, there is start-pg.sh script which will start PostgreSQL in your terminal on the foreground, so you (hopefully) won't forget to stop running your database when you leave computer.
 
 
+## Uninstalling
+
+- Remove directory pgsql, including all content (in your home directory).
+- Remove lines mentioning pgsql with LD_LIBRARY_PATH, PATH, PGHOST and PGDATA at the end of your .bashrc.
+
+
 ## Caveats
 
 There is practically no error checking. If build or something else fails, you are left to figure out what went wrong by yourself.
