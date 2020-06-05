@@ -3,7 +3,7 @@
 This script is meant for installing PostgreSQL for personal development use without admin privileges when using University of Helsinki Department of Computer Science lab computers (and fuksilappari) running Cubbli linux.
 OS (Cubbli) in these systems is based on Ubuntu, so this script probably works with Ubuntu too, and possibly other Linux distributions.
 
-If you have admin privileges, installing PostgreSQL using your OS package manager is better alternative. If you intend to run PostgreSQL in production, do not use this script, there is unlikely to be security updates.
+If you have admin privileges, installing PostgreSQL using your OS package manager or in a container is better alternative. If you intend to run PostgreSQL in production, do not use this script, there is unlikely to be security updates.
 
 
 ## Requirements
