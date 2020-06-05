@@ -10,6 +10,7 @@ PROFILEFILE=$HOMEDIR/.bashrc
 USERNAME=$USER
 PGVERSION=12.3
 SOURCEPKG=postgresql-$PGVERSION.tar.bz2
+CONFIGUREOPTIONS=" --with-openssl" # openssl just in case
 
 if [ -z "$1" ]; then
 echo "
@@ -66,7 +67,7 @@ SOURCEDIR=$(basename $PGFILE .tar.bz2)
 
 tar -xvjf $PGFILE
 cd $SOURCEDIR
-./configure --prefix=$INSTALLDIR --with-openssl # openssl just in case
+./configure --prefix=$INSTALLDIR $CONFIGUREOPTIONS 
 make
 make install-strip
 
