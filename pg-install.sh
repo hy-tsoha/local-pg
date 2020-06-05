@@ -114,10 +114,10 @@ rm -R $BUILDDIR
 
 echo "Creating database, please wait."
 
-$INSTALLDIR/bin/initdb --auth-local=trust --auth-host=reject -D $INSTALLDIR/data -s
-$INSTALLDIR/bin/pg_ctl -D $INSTALLDIR/data -l $INSTALLDIR/createdb-logfile start -s
+$INSTALLDIR/bin/initdb --auth-local=trust --auth-host=reject -D $INSTALLDIR/data > /dev/null
+$INSTALLDIR/bin/pg_ctl -s -D $INSTALLDIR/data -l $INSTALLDIR/createdb-logfile start
 $INSTALLDIR/bin/createdb -h $INSTALLDIR/sock $USERNAME
-$INSTALLDIR/bin/pg_ctl -D $INSTALLDIR/data stop -s
+$INSTALLDIR/bin/pg_ctl -s -D $INSTALLDIR/data stop
 
 echo "
 ******
