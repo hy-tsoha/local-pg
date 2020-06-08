@@ -45,6 +45,8 @@ Script will install PostgreSQL and your database in to your home directory, and 
 
 Since lab computers are shared, please do not leave your database running in the background. For your convenience, there is start-pg.sh script which will start PostgreSQL in your terminal on the foreground, so you (hopefully) won't forget to stop running your database when you leave computer.
 
+In code: If everything went right and you are using recent version (>1.3.2) of SQLAlchemy, you can now use 'postgresql+psycopg2://' as your connection string.
+
 
 ## Uninstalling
 
