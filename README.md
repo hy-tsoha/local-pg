@@ -41,7 +41,7 @@ Part of the script will add various environment variables to your .bashrc. You c
 
 ## Using installed PostgreSQL
 
-Script will install PostgreSQL and your database in to your home directory, and add necessary environment variables in to your .bashrc. Installed configuration will only accept connections from you using unix socket.
+Script will install PostgreSQL and your database in to your home directory, and add necessary environment variables in to your .bashrc. Installed configuration will only accept connections from you using unix socket in ~/pgsql/sock directory.
 
 Since lab computers are shared, please do not leave your database running in the background. For your convenience, there is start-pg.sh script which will start PostgreSQL in your terminal on the foreground, so you (hopefully) won't forget to stop running your database when you leave computer.
 
