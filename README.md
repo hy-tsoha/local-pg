@@ -35,7 +35,7 @@ For example, assuming you have file postgresql-12.3.tar.bz2 with PostgreSQL sour
 Alternatively, you can use word `install` instead of filename. In this case, script will try to download source code for version 12.3 using curl:
 `bash pg-install.sh install`
 
-Part of the script will add various environment variables to your .bashrc. You can override this by giving second parameter, for example:
+Part of the script will add various environment variables to your .bashrc. You can override where these are saved by giving second parameter, for example:
 `bash pg-install.sh install .bash_profile`
 
 
