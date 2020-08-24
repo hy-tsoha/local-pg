@@ -3,12 +3,16 @@
 This script is meant for installing PostgreSQL for personal development use without admin privileges when using University of Helsinki Department of Computer Science lab computers (and fuksilappari) running Cubbli linux.
 OS (Cubbli) in these systems is based on Ubuntu, so this script probably works with Ubuntu too, and possibly other Linux distributions.
 
-If you have admin privileges, installing PostgreSQL using your OS package manager or in a container is better alternative. If you intend to run PostgreSQL in production, do not use this script, there is unlikely to be security updates.
+If you have admin privileges, installing PostgreSQL using your OS package manager or in a container is probably better alternative. Even in these cases, benefit of this script would be that it configures PostgreSQL to only allow connections through unix socket, so your development database is not exposed to network. However, you can yourself configure any PostgreSQL installation similarly.
+
+If you intend to run PostgreSQL in production, do not use this script, there is unlikely to be security updates.
 
 
 ## Requirements
 
-See [PostgreSQL documentation](https://www.postgresql.org/docs/12/install-requirements.html).
+See [PostgreSQL documentation](https://www.postgresql.org/docs/12/install-requirements.html) for more detailed description of installation requirements.
+
+Your computer needs to have following tools and libraries installed:
 
 - GNU Make 3.80
 - gcc or other compiler supporting C99
@@ -18,7 +22,7 @@ See [PostgreSQL documentation](https://www.postgresql.org/docs/12/install-requir
 - zlib
 - openssl
 
-If you are using department computers, all of these should be installed already.
+If you are using department computers, all of these requirements should be installed already. If you are using some other computer, you need to make sure these are installed.
 
 You will need access to directory /tmp for the build process.
 
@@ -45,7 +49,7 @@ Script will install PostgreSQL and your database in to your home directory, and 
 
 Since lab computers are shared, please do not leave your database running in the background. For your convenience, there is `start-pg.sh` script which will start PostgreSQL in your terminal on the foreground, so you (hopefully) won't forget to stop running your database when you leave computer. Directory with the script should be added to your PATH variable, so you can run it without writing full path.
 
-When you want to stop PostgreSQL, stop it with ctrl-c. Closing terminal will not stop PostgreSQL, only detach it to background. If you do this, you may stop PostgreSQL with `kill $(ps x|grep pgsql/bin/postgres|grep -v grep|awk '{print $1}')`.
+When you want to stop PostgreSQL, stop it with ctrl-c. Closing terminal will not stop PostgreSQL, only detach it to background. If you do this, you may stop PostgreSQL manually. For your convenience, oneliner `kill $(ps x|grep pgsql/bin/postgres|grep -v grep|awk '{print $1}')` may work.
 
 In code: If everything went right and you are using recent version (>1.3.2) of SQLAlchemy, you can now use `postgresql+psycopg2://` as your connection string.
 
