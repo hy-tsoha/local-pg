@@ -49,7 +49,7 @@ Script will install PostgreSQL and your database in to your home directory, and 
 
 Since lab computers are shared, please do not leave your database running in the background. For your convenience, there is `start-pg.sh` script which will start PostgreSQL in your terminal on the foreground, so you (hopefully) won't forget to stop running your database when you leave computer. Directory with the script should be added to your PATH variable, so you can run it without writing full path.
 
-When you want to stop PostgreSQL, stop it with ctrl-c. Closing terminal will not stop PostgreSQL, only detach it to background. If you do this, you may stop PostgreSQL manually. For your convenience, oneliner `kill $(ps x|grep pgsql/bin/postgres|grep -v grep|awk '{print $1}')` may work.
+When you want to stop PostgreSQL, stop it with ctrl-c. Closing terminal will not stop PostgreSQL, only detach it to background. If you do this, you need to stop PostgreSQL manually. For your convenience, oneliner `kill $(ps x|grep pgsql/bin/postgres|grep -v grep|awk '{print $1}')` may work.
 
 In code: If everything went right and you are using recent version (>1.3.2) of SQLAlchemy, you can now use `postgresql+psycopg2://` as your connection string.
 
