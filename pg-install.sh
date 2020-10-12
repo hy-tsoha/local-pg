@@ -64,7 +64,7 @@ curl -O https://ftp.postgresql.org/pub/source/v$PGVERSION/$SOURCEPKG
 PGFILE=$(realpath $SOURCEPKG)
 cd "$BUILDDIR" || exit
 elif [ -f "$1" ]; then
-PGFILE=$(realpath $1)
+PGFILE=$(realpath "$1")
 cd "$BUILDDIR" || exit
 else
 echo "
