@@ -80,7 +80,7 @@ SOURCEDIR=$(basename "$PGFILE" .tar.bz2)
 
 tar -xjf "$PGFILE"
 cd "$SOURCEDIR" || exit
-./configure --prefix="$INSTALLDIR" "$CONFIGUREOPTIONS"
+./configure --prefix="$INSTALLDIR" $CONFIGUREOPTIONS
 make
 make install-strip
 
