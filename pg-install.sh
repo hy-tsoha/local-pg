@@ -4,9 +4,8 @@
 
 STARTDIR=$(pwd)
 BUILDDIR=/tmp/$USER-pg-build
-HOMEDIR=$HOME
-INSTALLDIR=$HOMEDIR/pgsql
-PROFILEFILE=$HOMEDIR/.bashrc
+INSTALLDIR=$HOME/pgsql
+PROFILEFILE=$HOME/.bashrc
 USERNAME=$USER
 PGVERSION=12.3
 SOURCEPKG=postgresql-$PGVERSION.tar.bz2
@@ -31,7 +30,7 @@ fi
 # modify PROFILEFILE if there is second parameter
 
 if [ "x$2" != "x" ]; then
-PROFILEFILE=$HOMEDIR/$2
+PROFILEFILE=$HOME/$2
 # for example: .bash_profile, .profile or I_want_to_see_what_would_be_added
 fi
 
