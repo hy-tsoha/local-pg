@@ -77,7 +77,7 @@ fi
 
 SOURCEDIR=$(basename "$PGFILE" .tar.bz2)
 
-tar -xvjf "$PGFILE"
+tar -xjf "$PGFILE"
 cd "$SOURCEDIR" || exit
 ./configure --prefix="$INSTALLDIR" "$CONFIGUREOPTIONS"
 make
