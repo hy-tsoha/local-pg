@@ -166,3 +166,12 @@ socket directory (PGHOST): $INSTALLDIR/sock
 database name: $USER
 
 " > "$INSTALLDIR/README.variables"
+
+# create file with uninstall instructions
+
+echo "
+1) If you want to save your database contents, move $INSTALLDIR/data out of $INSTALLDIR.
+2) Delete entire $INSTALLDIR.
+3) Remove lines mentioning pgsql with LD_LIBRARY_PATH, PATH, PGHOST and PGDATA at the end of your $PROFILEFILE
+
+" > "$INSTALLDIR/README.uninstall"
