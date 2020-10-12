@@ -55,37 +55,37 @@ Adding environment variables to $PROFILEFILE
 Build should take about 5 minutes."
 sleep 5
 
-mkdir -p $BUILDDIR
+mkdir -p "$BUILDDIR"
 
 if [ "$1" = "install" ]; then
-cd $BUILDDIR
+cd "$BUILDDIR"
 curl -O https://ftp.postgresql.org/pub/source/v$PGVERSION/$SOURCEPKG
 PGFILE=$(realpath $SOURCEPKG)
 elif [ -f "$1" ]; then
 PGFILE=$(realpath $1)
-cd $BUILDDIR
+cd "$BUILDDIR"
 else
 echo "
 no valid command or file as first parameter.
 "
-rmdir $BUILDDIR
+rmdir "$BUILDDIR"
 exit 1
 fi
 
 
 # build and install
 
-SOURCEDIR=$(basename $PGFILE .tar.bz2)
+SOURCEDIR=$(basename "$PGFILE" .tar.bz2)
 
-tar -xvjf $PGFILE
-cd $SOURCEDIR
-./configure --prefix=$INSTALLDIR $CONFIGUREOPTIONS 
+tar -xvjf "$PGFILE"
+cd "$SOURCEDIR"
+./configure --prefix="$INSTALLDIR $CONFIGUREOPTIONS"
 make
 make install-strip
 
 # update .bash_profile
 
-grep -q $INSTALLDIR $PROFILEFILE 2>/dev/null
+grep -q "$INSTALLDIR" "$PROFILEFILE" 2>/dev/null
 if [ $? -gt 0 ]; then
 echo "LD_LIBRARY_PATH=$INSTALLDIR/lib
 export LD_LIBRARY_PATH
@@ -94,7 +94,7 @@ export PATH
 PGHOST=$INSTALLDIR/sock
 export PGHOST
 PGDATA=$INSTALLDIR/data
-export PGDATA" >> $PROFILEFILE
+export PGDATA" >> "$PROFILEFILE"
 echo "
 Added environment variables to $PROFILEFILE
 "
@@ -106,28 +106,28 @@ fi
 
 # modify default config to use only sockets
 
-mv $INSTALLDIR/share/postgresql.conf.sample $INSTALLDIR/share/postgresql.conf.sample.orig
+mv "$INSTALLDIR/share/postgresql.conf.sample" "$INSTALLDIR/share/postgresql.conf.sample.orig"
 sed -e "s|#listen_addresses = 'localhost'|listen_addresses = ''|" \
 -e "s|#unix_socket_directories = '/tmp'|unix_socket_directories = '$INSTALLDIR/sock'|" \
 -e 's|#unix_socket_permissions = 0777|unix_socket_permissions = 0700|' \
-< $INSTALLDIR/share/postgresql.conf.sample.orig > $INSTALLDIR/share/postgresql.conf.sample
+< "$INSTALLDIR/share/postgresql.conf.sample.orig" > "$INSTALLDIR/share/postgresql.conf.sample"
 
-mkdir $INSTALLDIR/sock
-chmod 0700 $INSTALLDIR/sock
+mkdir "$INSTALLDIR/sock"
+chmod 0700 "$INSTALLDIR/sock"
 
 # move to where we started and clean up
 
-cd $STARTDIR
-rm -R $BUILDDIR
+cd "$STARTDIR"
+rm -R "$BUILDDIR"
 
 # initdb and createdb
 
 echo "Creating database, please wait."
 
-$INSTALLDIR/bin/initdb --auth-local=trust --auth-host=reject -D $INSTALLDIR/data > /dev/null
-$INSTALLDIR/bin/pg_ctl -s -D $INSTALLDIR/data -l $INSTALLDIR/createdb-logfile start
-$INSTALLDIR/bin/createdb -h $INSTALLDIR/sock $USER
-$INSTALLDIR/bin/pg_ctl -s -D $INSTALLDIR/data stop
+"$INSTALLDIR/bin/initdb" --auth-local=trust --auth-host=reject -D "$INSTALLDIR/data" > /dev/null
+"$INSTALLDIR/bin/pg_ctl" -s -D "$INSTALLDIR/data" -l "$INSTALLDIR/createdb-logfile" start
+"$INSTALLDIR/bin/createdb" -h "$INSTALLDIR/sock" "$USER"
+"$INSTALLDIR/bin/pg_ctl" -s -D "$INSTALLDIR/data" stop
 
 echo "
 ******
@@ -165,4 +165,4 @@ data directory (PGDATA): $INSTALLDIR/data
 socket directory (PGHOST): $INSTALLDIR/sock
 database name: $USER
 
-" > $INSTALLDIR/README.variables
+" > "$INSTALLDIR/README.variables"
