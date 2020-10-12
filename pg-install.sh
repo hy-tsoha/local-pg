@@ -172,6 +172,7 @@ database name: $USER
 echo "
 1) If you want to save your database contents, move $INSTALLDIR/data out of $INSTALLDIR.
 2) Delete entire $INSTALLDIR.
-3) Remove lines mentioning pgsql with LD_LIBRARY_PATH, PATH, PGHOST and PGDATA at the end of your $PROFILEFILE
+3) Remove lines mentioning pgsql with LD_LIBRARY_PATH, PATH, PGHOST and PGDATA at or 
+   near the end of your $PROFILEFILE (or where ever you have added them manually)
 
 " > "$INSTALLDIR/README.uninstall"
