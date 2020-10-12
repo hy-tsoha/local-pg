@@ -7,7 +7,7 @@ BUILDDIR=/tmp/$USER-pg-build
 INSTALLDIR=$HOME/pgsql
 PGVERSION=12.3
 SOURCEPKG=postgresql-$PGVERSION.tar.bz2
-CONFIGUREOPTIONS=" --with-openssl" # openssl just in case
+CONFIGUREOPTIONS="--with-openssl" # openssl just in case
 
 if [ -z "$1" ]; then
 echo "
