@@ -6,7 +6,6 @@ STARTDIR=$(pwd)
 BUILDDIR=/tmp/$USER-pg-build
 INSTALLDIR=$HOME/pgsql
 PROFILEFILE=$HOME/.bashrc
-USERNAME=$USER
 PGVERSION=12.3
 SOURCEPKG=postgresql-$PGVERSION.tar.bz2
 CONFIGUREOPTIONS=" --with-openssl" # openssl just in case
@@ -113,7 +112,7 @@ echo "Creating database, please wait."
 
 $INSTALLDIR/bin/initdb --auth-local=trust --auth-host=reject -D $INSTALLDIR/data > /dev/null
 $INSTALLDIR/bin/pg_ctl -s -D $INSTALLDIR/data -l $INSTALLDIR/createdb-logfile start
-$INSTALLDIR/bin/createdb -h $INSTALLDIR/sock $USERNAME
+$INSTALLDIR/bin/createdb -h $INSTALLDIR/sock $USER
 $INSTALLDIR/bin/pg_ctl -s -D $INSTALLDIR/data stop
 
 echo "
@@ -150,6 +149,6 @@ chmod u+x $INSTALLDIR/bin/start-pg.sh
 echo "
 data directory (PGDATA): $INSTALLDIR/data
 socket directory (PGHOST): $INSTALLDIR/sock
-database name: $USERNAME
+database name: $USER
 
 " > $INSTALLDIR/README.variables
