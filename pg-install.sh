@@ -108,6 +108,11 @@ Added environment variables to $PROFILEFILE
 fi
 else
 echo "$PROFILEFILE does not exist!"
+echo "
+Added environment variables to $INSTALLDIR/README.environment, copy these manually to correct location.
+"
+fi
+
 echo "LD_LIBRARY_PATH=$INSTALLDIR/lib
 export LD_LIBRARY_PATH
 PATH=$INSTALLDIR/bin:$PATH
@@ -116,10 +121,6 @@ PGHOST=$INSTALLDIR/sock
 export PGHOST
 PGDATA=$INSTALLDIR/data
 export PGDATA" >> "$INSTALLDIR/README.environment"
-echo "
-Added environment variables to $INSTALLDIR/README.environment, copy these manually to correct location.
-"
-fi
 
 # modify default config to use only sockets
 
