@@ -8,6 +8,7 @@ INSTALLDIR=$HOME/pgsql
 PGVERSION=12.3
 SOURCEPKG=postgresql-$PGVERSION.tar.bz2
 CONFIGUREOPTIONS="--with-openssl" # openssl just in case
+# if you need additional configure options, add them above separated by space
 
 if [ -z "$1" ]; then
 echo "
