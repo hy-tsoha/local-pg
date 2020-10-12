@@ -87,6 +87,7 @@ make install-strip
 # update profile file
 
 if grep -q "$INSTALLDIR" "$PROFILEFILE" 2>/dev/null; then
+if [ -f "$PROFILEFILE" ]; then
 echo "LD_LIBRARY_PATH=$INSTALLDIR/lib
 export LD_LIBRARY_PATH
 PATH=$INSTALLDIR/bin:$PATH
@@ -98,6 +99,20 @@ export PGDATA" >> "$PROFILEFILE"
 echo "
 Added environment variables to $PROFILEFILE
 "
+else
+echo "$PROFILEFILE does not exist!"
+echo "LD_LIBRARY_PATH=$INSTALLDIR/lib
+export LD_LIBRARY_PATH
+PATH=$INSTALLDIR/bin:$PATH
+export PATH
+PGHOST=$INSTALLDIR/sock
+export PGHOST
+PGDATA=$INSTALLDIR/data
+export PGDATA" >> "$INSTALLDIR/README.environment"
+echo "
+Added environment variables to $INSTALLDIR/README.environment, copy these manually to correct location.
+"
+fi
 else
 echo "
 $PROFILEFILE not updated, $INSTALLDIR is already mentioned there, so assuming this is reinstall and it is up to date.
