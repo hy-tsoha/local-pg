@@ -56,8 +56,7 @@ In code: If everything went right and you are using recent version (>1.3.2) of S
 
 ## Uninstalling
 
-- Remove directory pgsql, including all content (in your home directory). Alternatively, if you want to save your database contents, remove everything from pgsql except directory data and its contents.
-- Remove lines mentioning pgsql with LD_LIBRARY_PATH, PATH, PGHOST and PGDATA at the end of your .bashrc.
+- Uninstallation instructions are in pgsql/README.uninstall
 
 
 ## Caveats
