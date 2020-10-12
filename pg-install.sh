@@ -31,6 +31,7 @@ fi
 SHELLNAME=$(basename "$SHELL")
 if [ "x$2" != "x" ]; then
 PROFILEFILE=$HOME/$2
+touch "$PROFILEFILE"
 # for example: .bash_profile, .profile or I_want_to_see_what_would_be_added
 echo "Using $2 to save environment variables."
 elif [ "$SHELLNAME" = "bash" ]; then
