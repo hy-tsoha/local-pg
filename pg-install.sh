@@ -84,7 +84,7 @@ cd "$SOURCEDIR" || exit
 make
 make install-strip
 
-# update .bash_profile
+# update profile file
 
 if grep -q "$INSTALLDIR" "$PROFILEFILE" 2>/dev/null; then
 echo "LD_LIBRARY_PATH=$INSTALLDIR/lib
