@@ -79,7 +79,7 @@ SOURCEDIR=$(basename "$PGFILE" .tar.bz2)
 
 tar -xvjf "$PGFILE"
 cd "$SOURCEDIR" || exit
-./configure --prefix="$INSTALLDIR $CONFIGUREOPTIONS"
+./configure --prefix="$INSTALLDIR" "$CONFIGUREOPTIONS"
 make
 make install-strip
 
@@ -155,8 +155,8 @@ do not hardcode this into your code, this connection will only work for you.
 
 echo "#!/usr/bin/env bash
 
-$INSTALLDIR/bin/postgres -D $INSTALLDIR/data" > $INSTALLDIR/bin/start-pg.sh
-chmod u+x $INSTALLDIR/bin/start-pg.sh
+$INSTALLDIR/bin/postgres -D $INSTALLDIR/data" > "$INSTALLDIR/bin/start-pg.sh"
+chmod u+x "$INSTALLDIR/bin/start-pg.sh"
 
 # create file with variables
 
