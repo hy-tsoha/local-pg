@@ -5,7 +5,6 @@
 STARTDIR=$(pwd)
 BUILDDIR=/tmp/$USER-pg-build
 INSTALLDIR=$HOME/pgsql
-PROFILEFILE=$HOME/.bashrc
 PGVERSION=12.3
 SOURCEPKG=postgresql-$PGVERSION.tar.bz2
 CONFIGUREOPTIONS=" --with-openssl" # openssl just in case
@@ -26,11 +25,26 @@ for example:
 exit 1
 fi
 
-# modify PROFILEFILE if there is second parameter
+# define PROFILEFILE
 
+SHELLNAME=$(basename "$SHELL")
 if [ "x$2" != "x" ]; then
 PROFILEFILE=$HOME/$2
 # for example: .bash_profile, .profile or I_want_to_see_what_would_be_added
+echo "Using $2 to save environment variables."
+elif [ "$SHELLNAME" = "bash" ]; then
+PROFILEFILE=$HOME/.bashrc
+echo "You are currently using bash as your shell, so defaulting to .bashrc for environment variables."
+elif [ "$SHELLNAME" = "zsh" ]; then
+PROFILEFILE=$HOME/.zshrc
+echo "You are currently using zsh as your shell, so defaulting to .zshrc for environment variables."
+elif [ "$SHELLNAME" = "csh" ] || [ "$SHELLNAME" = "tcsh" ]; then
+PROFILEFILE=$HOME/pg-shellvariables
+echo "This script does not automatically add variables with csh syntax to your shell configuration."
+echo "Please add manually variables from $PROFILEFILE to your .cshrc using csh syntax."
+else
+PROFILEFILE=$HOME/.shrc
+echo "Defaulting to .shrc for environment variables, if this is incorrect, please copy these manually to correct file."
 fi
 
 echo "
