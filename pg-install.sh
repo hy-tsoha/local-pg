@@ -86,8 +86,7 @@ make install-strip
 
 # update .bash_profile
 
-grep -q "$INSTALLDIR" "$PROFILEFILE" 2>/dev/null
-if [ $? -gt 0 ]; then
+if grep -q "$INSTALLDIR" "$PROFILEFILE" 2>/dev/null; then
 echo "LD_LIBRARY_PATH=$INSTALLDIR/lib
 export LD_LIBRARY_PATH
 PATH=$INSTALLDIR/bin:$PATH
