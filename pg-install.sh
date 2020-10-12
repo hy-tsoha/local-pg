@@ -58,9 +58,10 @@ sleep 5
 mkdir -p "$BUILDDIR"
 
 if [ "$1" = "install" ]; then
-cd "$BUILDDIR" || exit
+cd /tmp || exit
 curl -O https://ftp.postgresql.org/pub/source/v$PGVERSION/$SOURCEPKG
 PGFILE=$(realpath $SOURCEPKG)
+cd "$BUILDDIR" || exit
 elif [ -f "$1" ]; then
 PGFILE=$(realpath $1)
 cd "$BUILDDIR" || exit
