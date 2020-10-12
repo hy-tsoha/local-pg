@@ -90,6 +90,10 @@ make install-strip
 
 if [ -f "$PROFILEFILE" ]; then
 if grep -q "$INSTALLDIR" "$PROFILEFILE" 2>/dev/null; then
+echo "
+$PROFILEFILE not updated, $INSTALLDIR is already mentioned there, so assuming this is reinstall and it is up to date.
+"
+else
 echo "LD_LIBRARY_PATH=$INSTALLDIR/lib
 export LD_LIBRARY_PATH
 PATH=$INSTALLDIR/bin:$PATH
@@ -100,10 +104,6 @@ PGDATA=$INSTALLDIR/data
 export PGDATA" >> "$PROFILEFILE"
 echo "
 Added environment variables to $PROFILEFILE
-"
-else
-echo "
-$PROFILEFILE not updated, $INSTALLDIR is already mentioned there, so assuming this is reinstall and it is up to date.
 "
 fi
 else
