@@ -58,12 +58,12 @@ sleep 5
 mkdir -p "$BUILDDIR"
 
 if [ "$1" = "install" ]; then
-cd "$BUILDDIR"
+cd "$BUILDDIR" || exit
 curl -O https://ftp.postgresql.org/pub/source/v$PGVERSION/$SOURCEPKG
 PGFILE=$(realpath $SOURCEPKG)
 elif [ -f "$1" ]; then
 PGFILE=$(realpath $1)
-cd "$BUILDDIR"
+cd "$BUILDDIR" || exit
 else
 echo "
 no valid command or file as first parameter.
@@ -78,7 +78,7 @@ fi
 SOURCEDIR=$(basename "$PGFILE" .tar.bz2)
 
 tar -xvjf "$PGFILE"
-cd "$SOURCEDIR"
+cd "$SOURCEDIR" || exit
 ./configure --prefix="$INSTALLDIR $CONFIGUREOPTIONS"
 make
 make install-strip
@@ -117,7 +117,7 @@ chmod 0700 "$INSTALLDIR/sock"
 
 # move to where we started and clean up
 
-cd "$STARTDIR"
+cd "$STARTDIR" || exit
 rm -R "$BUILDDIR"
 
 # initdb and createdb
