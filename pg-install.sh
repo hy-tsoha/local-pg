@@ -96,7 +96,7 @@ $PROFILEFILE not updated, $INSTALLDIR is already mentioned there, so assuming th
 else
 echo "LD_LIBRARY_PATH=$INSTALLDIR/lib
 export LD_LIBRARY_PATH
-PATH=$INSTALLDIR/bin:$PATH
+PATH=$INSTALLDIR/bin:\$PATH
 export PATH
 PGHOST=$INSTALLDIR/sock
 export PGHOST
@@ -115,7 +115,7 @@ fi
 
 echo "LD_LIBRARY_PATH=$INSTALLDIR/lib
 export LD_LIBRARY_PATH
-PATH=$INSTALLDIR/bin:$PATH
+PATH=$INSTALLDIR/bin:\$PATH
 export PATH
 PGHOST=$INSTALLDIR/sock
 export PGHOST
