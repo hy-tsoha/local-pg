@@ -87,6 +87,10 @@ make
 make install-strip
 
 # update profile file
+env_vars="export LD_LIBRARY_PATH=$INSTALLDIR/lib
+export PATH=$INSTALLDIR/bin:\$PATH
+export PGHOST=$INSTALLDIR/sock
+export PGDATA=$INSTALLDIR/data"
 
 if [ -f "$PROFILEFILE" ]; then
 if grep -q "$INSTALLDIR" "$PROFILEFILE" 2>/dev/null; then
@@ -94,14 +98,7 @@ echo "
 $PROFILEFILE not updated, $INSTALLDIR is already mentioned there, so assuming this is reinstall and it is up to date.
 "
 else
-echo "LD_LIBRARY_PATH=$INSTALLDIR/lib
-export LD_LIBRARY_PATH
-PATH=$INSTALLDIR/bin:$PATH
-export PATH
-PGHOST=$INSTALLDIR/sock
-export PGHOST
-PGDATA=$INSTALLDIR/data
-export PGDATA" >> "$PROFILEFILE"
+echo "$env_vars" >> "$PROFILEFILE"
 echo "
 Added environment variables to $PROFILEFILE
 "
@@ -113,14 +110,7 @@ Added environment variables to $INSTALLDIR/README.environment, copy these manual
 "
 fi
 
-echo "LD_LIBRARY_PATH=$INSTALLDIR/lib
-export LD_LIBRARY_PATH
-PATH=$INSTALLDIR/bin:$PATH
-export PATH
-PGHOST=$INSTALLDIR/sock
-export PGHOST
-PGDATA=$INSTALLDIR/data
-export PGDATA" >> "$INSTALLDIR/README.environment"
+echo "$env_vars" >> "$INSTALLDIR/README.environment"
 
 # modify default config to use only sockets
 
