@@ -33,10 +33,10 @@ Installed size without any data in database is about 92M.
 
 Basic usage: `bash pg-install.sh FILE` where FILE is .tar.bz2 packaged [source code of PostgreSQL](https://www.postgresql.org/ftp/source/).
 
-For example, assuming you have file postgresql-12.3.tar.bz2 with PostgreSQL source code in your Downloads directory:
-`bash pg-install.sh ~/Downloads/postgresql-12.3.tar.bz2`
+For example, assuming you have file postgresql-12.5.tar.bz2 with PostgreSQL source code in your Downloads directory:
+`bash pg-install.sh ~/Downloads/postgresql-12.5.tar.bz2`
 
-Alternatively, you can use word `install` instead of filename. In this case, script will try to download source code for version 12.3 using curl:
+Alternatively, you can use word `install` instead of filename. In this case, script will try to download source code for version 12.5 using curl:
 `bash pg-install.sh install`
 
 Part of the script will add various environment variables to your .bashrc. Normally above example commands should be fine, but if you need to override where environment variable changes are saved you can do so by giving second parameter, for example:
