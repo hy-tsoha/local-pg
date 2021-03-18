@@ -83,8 +83,20 @@ SOURCEDIR=$(basename "$PGFILE" .tar.bz2)
 tar -xjf "$PGFILE"
 cd "$SOURCEDIR" || exit
 ./configure --prefix="$INSTALLDIR" $CONFIGUREOPTIONS
+if [ $? -gt 0 ];
+then
+  exit 1
+fi
 make
+if [ $? -gt 0 ];
+then
+  exit 1
+fi
 make install-strip
+if [ $? -gt 0 ];
+then
+  exit 1
+fi
 
 # update profile file
 env_vars="export LD_LIBRARY_PATH=$INSTALLDIR/lib
