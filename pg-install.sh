@@ -54,7 +54,7 @@ Building in $BUILDDIR
 Installing to $INSTALLDIR
 Adding environment variables to $PROFILEFILE
 
-Build should take about 5 minutes."
+Build should take less than a minute."
 sleep 5
 
 mkdir -p "$BUILDDIR"
@@ -87,12 +87,12 @@ if [ $? -gt 0 ];
 then
   exit 1
 fi
-make
+make -j$(nproc)
 if [ $? -gt 0 ];
 then
   exit 1
 fi
-make install-strip
+make -j$(nproc) install-strip
 if [ $? -gt 0 ];
 then
   exit 1
