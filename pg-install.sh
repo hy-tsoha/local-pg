@@ -9,6 +9,9 @@ PGVERSION=12.15
 SOURCEPKG=postgresql-$PGVERSION.tar.bz2
 CONFIGUREOPTIONS="--with-openssl" # openssl just in case
 # if you need additional configure options, add them above separated by space
+MAKEOPTIONS="" # no extra make flags by default
+# You can uncomment below line if you want to try to speed up compilation
+# MAKEOPTIONS="-j"
 
 if [ -z "$1" ]; then
 echo "
@@ -87,7 +90,7 @@ if [ $? -gt 0 ];
 then
   exit 1
 fi
-make
+make $MAKEOPTIONS
 if [ $? -gt 0 ];
 then
   exit 1
