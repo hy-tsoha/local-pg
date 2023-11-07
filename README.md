@@ -36,6 +36,8 @@ Basic usage: `bash pg-install.sh FILE` where FILE is .tar.bz2 packaged [source c
 For example, assuming you have file postgresql-12.15.tar.bz2 with PostgreSQL source code in your Downloads directory:
 `bash pg-install.sh ~/Downloads/postgresql-12.15.tar.bz2`
 
+Note that the script may not work correctly with the latest PostgreSQL version. PostgreSQL 12 should be a good choice.
+
 Alternatively, you can use word `install` instead of filename. In this case, script will try to download source code for version 12.15 using curl:
 `bash pg-install.sh install`
 
